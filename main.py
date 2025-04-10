@@ -1,24 +1,30 @@
-# imc_calculadora.py
+from fastapi import FastAPI
+import random
+from pydantic import BaseModel
 
-print("Calculadora de IMC")
+app = FastAPI()
 
-try:
-    peso = float(input("Digite seu peso (kg): "))
-    altura = float(input("Digite sua altura (m): "))
+class Estudante(BaseModel):
+    name: str
+    curso: str
+    ativo: bool
 
-    if peso <= 0 or altura <= 0:
-        raise ValueError("Peso e altura devem ser maiores que zero.")
+@app.get("/helloworld")
+async def root():
+    return {"message": "Hello World"}
 
-    imc = peso / (altura ** 2)
-    print(f"Seu IMC é: {imc:.2f}")
+@app.get("/funcaoteste")
+async def funcaoteste():
+    return {"teste": True, "num_aleatorio": random.randint(0,1000)}
 
-    if imc < 18.5:
-        print("Classificação: Abaixo do peso")
-    elif imc < 25:
-        print("Classificação: Peso normal")
-    elif imc < 30:
-        print("Classificação: Sobrepeso")
-    else:
-        print("Classificação: Obesidade")
-except ValueError as e:
-    print(f"Erro: {e}")
+@app.post("/estudantes/cadastro")
+async def create_estudante(estudante: Estudante):
+    return estudante
+
+@app.put("/estudantes/update/{id_estudante}")
+async def update_item(id_estudante: int):
+    return id_estudante>0
+
+@app.delete("/estudantes/delete/{id_estudante}")
+async def delete_estudante(id_estudante: int):
+    return id_estudante>0
