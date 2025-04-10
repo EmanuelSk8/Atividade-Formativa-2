@@ -1,11 +1,11 @@
-name: GitHub Actions Demo
+name: Continuos Delivery
 on:
-  pull_request:
+  push:
       branches:
         - main
 
 jobs:
-  build:
+  delivery:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
