@@ -22,4 +22,3 @@ try:
         print("Classificação: Obesidade")
 except ValueError as e:
     print(f"Erro: {e}")
-Alteracao2=5
