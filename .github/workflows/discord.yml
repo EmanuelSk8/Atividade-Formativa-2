@@ -12,6 +12,6 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Notify Discord
-        uses: johnnyhuy/actions-discord-git-webhook@v1.2.0
+        uses: johnnyhuy/actions-discord-git-webhook@v1.0.4
         with:
           webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
