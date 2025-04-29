@@ -8,7 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Run Discord Webhook
-        uses: Sniddl/discord-commits@v1.6
+      - name: Notify Discord
+        uses: johnnyhuy/actions-discord-git-webhook@v1.2.0
         with:
-          webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
+        webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
+
